@@ -94,6 +94,7 @@
                     <div class="foot">
                         <div class="inner">
                             <p>PFG - Creación de un sistema de BBDD que permita la creación de un plan para ver películas en emisión en salas de cine, por <a href="https://twitter.com/ireneladler">María Maestre</a>.</p>
+                            <div id="license"></div><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></div>
                         </div>
                     </div>
                     
