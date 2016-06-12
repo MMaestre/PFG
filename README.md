@@ -5,24 +5,29 @@ The main idea is a web app which plan a cinema evening for you. It lets you choo
 I'm trying to make it automatic, so no backend is needed.
 
 ## Code Example
-function showAllMovies($hourPass, $transporte)
-	{
-		for ($cine1=1; $cine1<6; $cine1++)
-		{
-			$time=new DateTime($hourPass);
-			$transporte=2;
-			for ($cine2=1; $cine2<6; $cine2++)
-			{
-				if ($cine1==$cine2)
-				{
-					$transporte=0;
-				}
-				$time->add(new DateInterval('PT'.travelTime($cine1, $cine2, $transporte).'M'));
-				
-				showMovies($time, $cine2);
-			}
-		}
-	}
+
+```html
+<pre>
+    function showAllMovies($hourPass, $transporte)
+    {
+    	for ($cine1=1; $cine1<6; $cine1++)
+    	{
+    		$time=new DateTime($hourPass);
+    		$transporte=2;
+    		for ($cine2=1; $cine2<6; $cine2++)
+    		{
+    			if ($cine1==$cine2)
+    			{
+    				$transporte=0;
+    			}
+    			$time->add(new DateInterval('PT'.travelTime($cine1, $cine2, $transporte).'M'));
+    			
+    			showMovies($time, $cine2);
+    		}
+    	}
+    }
+</pre>
+```
 
 ## Motivation
 
