@@ -1,0 +1,179 @@
+/*
+ * Hoja de Estilo
+ */
+
+/* Links || Enlaces */
+
+a, a:focus, a:hover 
+{
+  color: rebeccapurple;
+}
+
+/* Botón por Defecto */
+
+.btn-default, .btn-default:hover, .btn-default:focus 
+{
+  color: #335;
+  text-shadow: none; /* Evita heredar desde body */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/* Base */
+
+html, body 
+{
+  height: 100%;
+  background-color: #333333;
+}
+
+body 
+{
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.site-wrapper 
+{
+  display: table;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.site-wrapper-inner 
+{
+  display: table-cell;
+  vertical-align: top;     
+}
+
+.theme-container 
+{
+  margin-right: auto;
+  margin-left: auto;
+    margin-top:0px;
+}
+
+.inner 
+{
+  padding: 5px;
+}
+
+/* Header || Cabecera */
+.header
+{
+    BACKGROUND-COLOR:#421c52;
+    padding: 10px;
+}
+
+.header-brand 
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header-nav > li 
+{
+  display: inline-block;
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #b870cc; /* IE8 proofing */
+  color: rgba(184,112,204,.75);
+  border-bottom: 2px solid transparent;
+}
+
+.header-nav > li + li 
+{
+  margin-left: 20px;
+}
+
+.header-nav > li:hover, .header-nav > li:focus 
+{
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.5);
+}
+
+.header-nav > .active > li:hover, .header-nav > .active > li:focus, .header-nav > .active 
+{
+  color: #ffF;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) 
+{
+    .header-brand 
+    {
+        float: left;
+    }
+    .header-nav 
+    {
+        float: right;
+    }
+}
+
+
+.theme 
+{
+  padding: 0 20px;
+  margin-top: 0;
+}
+
+.theme .btn-lg 
+{
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/* Footer || Pie de Página */
+
+.foot 
+{
+    color: #999; /* IE8 proofing */
+    color: rgba(255,255,255,.5);
+    background-color: #443266;
+    padding: 10px;
+}
+
+
+/* Affix and center  */
+
+@media (min-width: 768px) 
+{
+    .header 
+    {
+        position: fixed;
+        top: 0;
+    }
+    
+    .foot 
+    {
+        position: fixed;
+        bottom: 0;
+    }
+    
+    .site-wrapper-inner 
+    {
+        vertical-align: middle;
+    }
+    
+    .header, .foot, .theme-container 
+    {
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) 
+{
+    .header, .foot, .theme-container 
+    {
+        width: 700px;
+    }
+}
