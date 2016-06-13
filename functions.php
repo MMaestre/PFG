@@ -19,7 +19,7 @@
 		return $name;
 	}
 
-	// Devuelve el título de la película
+	// Devuelve el tÃ­tulo de la pelÃ­cula
 	function showTitle($id)
 	{
 		$title=0;
@@ -38,7 +38,7 @@
         return $title;
 	}
 	
-	// Devuelve la url del poster de la película
+	// Devuelve la url del poster de la pelÃ­cula
 	function showPoster($id)
 	{
 		$img=0;
@@ -57,10 +57,10 @@
 		return $title;
 	}
 	
-	// Devuelve la duración de la película
+	// Devuelve la duraciÃ³n de la pelÃ­cula
 	function filmDuration($id)
 	{
-		// La duración va en minutos
+		// La duraciÃ³n va en minutos
 		$time=0;
 		$conexion = new PDO( "mysql:host=localhost;dbname=project", "root", "" );
 		
@@ -77,7 +77,7 @@
 		return $time;
 	}
 	
-	/* Devuelve un array con todos los datos del pase: nombre del cine, título de la película, url del poster de la misma
+	/* Devuelve un array con todos los datos del pase: nombre del cine, tÃ­tulo de la pelÃ­cula, url del poster de la misma
 	 * hora de inicio y hora de fin del pase	 */
 	// Llama a showCine($id)
 	// Llama a showTitle($id)
@@ -117,6 +117,9 @@
 					$HoraPase=new DateTime($row[$field]);
 					$passData['HoraFinalPase']=$HoraPase->add(new DateInterval('PT'.$horaCierre.'M'));
 					$passData['HoraPase']=new DateTime($row[$field]);
+					
+					$passData['HoraPase']=date_format($passData['HoraPase'],'H:i:s');
+					$passData['HoraFinalPase']=date_format($passData['HoraFinalPase'],'H:i:s');
 				}
 			}
         }
@@ -124,7 +127,7 @@
 		return $passData;
 	}
 	
-	// Devuelve el tiempo que se tarda en ir de un cine a otro en función de su medio de transporte.
+	// Devuelve el tiempo que se tarda en ir de un cine a otro en funciï¿½n de su medio de transporte.
 	function travelTime($cine1, $cine2, $transport)
 	{
 		$time=0;
@@ -145,19 +148,16 @@
 		return $time;
 	}
 	
-	// Muestra todos los datos de las películas en función del cine y de la hora de emisión
+	// Muestra todos los datos de las pelÃ­culas en funciÃ³n del cine y de la hora de emisiÃ³n
 	// Llama a passData($passID)
 	function showMovies ($hour, $cine)
 	{
-		$time1=date_format(new DateTime($hour),'G:i:s');
-		
-		print_r($time1);
+		$time1=date_format($hour,'H:i:s');
 		
 		$movies=array();
-		$array=array();
 		$conexion = new PDO( "mysql:host=localhost;dbname=project", "root", "" );
 		
-		$sql = "SELECT passID FROM pass WHERE cineID= ? AND passHour> ? ORDER BY passHour";
+		$sql = "SELECT passID FROM pass WHERE cineID= ? AND passHour> ? ORDER BY cineID DESC, passHour ASC";
 		$rs = $conexion->prepare( $sql );
 		$rs->bindParam( 1, $cine);
 		$rs->bindParam( 2, $time1);
@@ -168,28 +168,33 @@
 			array_push($movies, passData($row['passID']));
 		}
 		
+		print_r($movies);
 		return $movies;
 	}
 
-	// Muestra todas las películas en función de la hora y el medio de transporte
+	// Muestra todas las pelÃ­culas en funciÃ³n de la hora y el medio de transporte
 	// Llama a travelTime($cine1, $cine2, $transport)
 	// Llama a showMovies($time, $cine2)
-	function showAllMovies($hourPass, $transporte)
+	function showAllMovies($hourPass)
 	{
 		for ($cine1=1; $cine1<6; $cine1++)
 		{
 			$time=new DateTime($hourPass);
-			$transporte=2;
-			for ($cine2=1; $cine2<6; $cine2++)
+			showMovies($time, $cine1);
+		}
+	}
+	
+	function filmsOtherCinema($cine1, $transporte, $hourPass)
+	{
+		$time=new DateTime($hourPass);
+		for ($cine2=1; $cine2<6; $cine2++)
+		{
+			if ($cine1==$cine2)
 			{
-				if ($cine1==$cine2)
-				{
-					$transporte=0;
-				}
-				$time->add(new DateInterval('PT'.travelTime($cine1, $cine2, $transporte).'M'));
-				
-				showMovies($time, $cine2);
+				$transporte=0;
 			}
+			$time->add(new DateInterval('PT'.travelTime($cine1, $cine2, $transporte).'M'));
+			showMovies($time, $cine2);
 		}
 	}
 
