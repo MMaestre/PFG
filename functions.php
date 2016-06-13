@@ -211,21 +211,5 @@
 		
 		return $horaPase;
 	}
-
-	// Convierte a formato horas;
-	function toTime($hora, $minuto)
-	{
-		$horafinal;
-		
-		if ($hora<10) { $hora="0".$hora; }		
-		if ($minuto<10) { $minuto="0".$minuto; }		
-		$string=$hora.":".$minuto;
-		
-		$horafinal=new DateTime($string);
-		$horafinal=$horafinal->format("H:i");
-		
-		return $horafinal;
-	}
 	
-	print_r(showMovies("21:10", 3));
 	?>
