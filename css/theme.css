@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Hoja de Estilo
  */
 
@@ -53,9 +53,9 @@ body
 
 .theme-container 
 {
-  margin-right: auto;
-  margin-left: auto;
-    margin-top:0px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:0px;
 }
 
 .inner 
@@ -142,6 +142,29 @@ body
     padding: 10px;
 }
 
+/* Resultados || Selección Primera Película */
+
+.row
+{
+	text-align:center;
+}
+
+.col-centered
+{
+	display:inline-block;
+    /*float:none;*/
+    /* reset the text-align */
+    text-align:justified;
+    /* inline-block space fix */
+    margin-right:-10px;
+}
+
+.col-lg-4  .col-md-4 .col-xs-6
+{
+  margin-left:auto;
+  /* margin-right: auto; */
+  margin-botton: 20px;
+}
 
 /* Affix and center  */
 
