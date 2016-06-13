@@ -18,7 +18,7 @@ foreach ($fields as $field)
 	else
 	{
 		session_destroy();
-		header ('Location: ?page=3');
+		header ('Location: ?page=1');
 	}
 }
 ?>
