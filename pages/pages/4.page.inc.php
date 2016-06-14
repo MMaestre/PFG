@@ -1,6 +1,6 @@
 <?php
 require_once realpath(__DIR__.'/../..').'/functions.php';
-require_once realpath(__DIR__.'/../..').'/checkForm.php';
+require_once realpath(__DIR__.'/../..').'/showmovies.php';
 
 $fields=array('transporte');
 $wrongFields=array();
@@ -18,14 +18,19 @@ foreach ($fields as $field)
 	else
 	{
 		session_destroy();
-		header ('Location: ?page=3');
+		header ('Location: ?page=1');
 	}
 }
+
+//session_destroy();
+
 ?>
 
 <h1 class="theme-heading">Películas disponibles</h1>
-
-<?php
-	print_r(showAllMovies($_SESSION['horaPase'], $_SESSION['transporte']));
-	// session_destroy();
-?>
+<form class="form-horizontal col-sm-12" action="?page=5" method="post">
+	<div class="form-group">
+        <?php
+        showResults(showAllMovies($_SESSION['horaPase'], $_SESSION['transporte']));
+        ?>
+     </div>
+</form>
