@@ -77,7 +77,7 @@
 		return $time;
 	}
 	
-	/* Devuelve un array con todos los datos del pase: nombre del cine, título de la película, url del poster de la misma
+	/* Devuelve un array con todos los datos del pase: identificador del pase, nombre del cine, título de la película, url del poster de la misma
 	 * hora de inicio y hora de fin del pase	 */
 	// Llama a showCine($id)
 	// Llama a showTitle($id)
